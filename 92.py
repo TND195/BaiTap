@@ -1,26 +1,27 @@
 #Bài 92: Tìm ước số chung lớn nhất của 2 số nguyên dương
-def checkNumberInteger(Num):
-    if Num.isdigit() == False or float(Num).is_integer() == False or int(Num) <= 0:
-        return False
-    else:
-        return True
-def greatestCommonDivisor(Num1 ,Num2):
-    if Num1 > Num2:
-        smallNumber = Num2
-    else:
-        smallNumber = Num1
-    for i in range(smallNumber, 1, -1):
-        if Num1 % i ==0 and Num2 % i ==0:
-            return i
-            break
 
+#comment?
+def is_number(value):
+    return value.isdigit() and float(value).is_integer() and int(value) > 0
+
+# comment? 
+def find_greatest_common_divisor(first ,second):
+    # comment xu ly 
+    target_number = first
+    if first > second:
+        target_number = second
+
+    for i in range(target_number, 1, -1):
+        if first % i ==0 and second % i ==0:
+            return i
+            #break ? return break làm gì? 
 
 if __name__ == '__main__':
-    NumberFirst = (input("Nhập số thứ nhất "))
-    while checkNumberInteger(NumberFirst) == False:
-        NumberFirst = (input("Nhập lại số thứ nhất "))
-    NumberSecond = (input("Nhập số thứ hai "))
-    while checkNumberInteger(NumberFirst) == False:
-        NumberFirst = (input("Nhập lại số thứ hai "))
-    print("Ước chung lớn nhất của 2 số là " + str(greatestCommonDivisor(int(NumberFirst),int(NumberSecond))))
-
+    # comment xu ly
+    first_number = (input("Nhập số thứ nhất "))
+    while is_number(first_number) == False:
+        first_number = (input("Nhập lại số thứ nhất "))
+    second_number = (input("Nhập số thứ hai "))
+    while is_number(first_number) == False:
+        first_number = (input("Nhập lại số thứ hai "))
+    print("Ước chung lớn nhất của 2 số là " + str(find_greatest_common_divisor(int(first_number),int(second_number))))
